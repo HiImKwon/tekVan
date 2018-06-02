@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TekVan.Profile">
+    <StackLayout>
+        <StackLayout x:Name="Login" Orientation="Vertical">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label Margin="0,15,0,0" Grid.Column="0" Grid.Row="0" Text="Username: " HorizontalOptions="End"/>
+                <Label Margin="0,15,0,0" Grid.Column="0" Grid.Row="1" Text="Password: " HorizontalOptions="End"/>
+
+                <Entry x:Name="txtUsername" Text="{Binding UserViewModel.Username}" Margin="0,0,5,0" Grid.Column="1" Grid.Row="0" Placeholder="Username" HorizontalOptions="FillAndExpand"/>
+                <Entry x:Name="txtPassword" Text="{Binding UserViewModel.Password}" Margin="0,0,5,0" Grid.Column="1" Grid.Row="1" IsPassword="True" Placeholder="Password" HorizontalOptions="FillAndExpand"/>
+            </Grid>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Text="Sign In" HorizontalOptions="Center" Clicked="SignIn_Clicked"/>
+                <Button Text="Sign Up" HorizontalOptions="Center" Clicked="SignUp_OnClicked"/>
+            </StackLayout>
+        </StackLayout>
+
+
+        <StackLayout x:Name="LoginSucceed" HorizontalOptions="Center">
+            <TableView>
+                <TableRoot>
+                    <TableSection Title="Information">
+                        <TextCell Text="{Binding User.Id}"/>
+                        <TextCell Text="{Binding User.Address}"/>
+                        <TextCell Text="{Binding User.Email}"/>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+            <Button Text="History" Clicked="HistoryButton_OnClicked"></Button>
+            <Button Text="Log Out" Clicked="LogOut_OnClicked"></Button>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
